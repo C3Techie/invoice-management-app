@@ -36,7 +36,7 @@ export const FilterComponent: React.FC<FilterComponentProps> = ({
       >
         <Typography 
           variant="heading-s-variant" 
-          className="text-[15px] font-bold leading-[15px] tracking-[-0.25px] text-[#0C0E16] dark:text-white"
+          className="text-[15px] font-bold leading-3.75 tracking-[-0.25px] text-[#0C0E16] dark:text-white"
         >
           <span className="hidden md:inline">Filter by status</span>
           <span className="md:hidden">Filter</span>
@@ -59,7 +59,7 @@ export const FilterComponent: React.FC<FilterComponentProps> = ({
 
       {isOpen && (
         <div 
-          className="absolute left-[-40px] top-[40px] z-50 w-[192px] rounded-lg bg-white p-6 shadow-[0_10px_20px_rgba(72,84,159,0.25)] dark:bg-[#252945] dark:shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
+          className="absolute -left-10 top-10 z-50 w-48 rounded-lg bg-white p-6 shadow-[0_10px_20px_rgba(72,84,159,0.25)] dark:bg-[#252945] dark:shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
           style={{ height: '128px' }}
         >
           <div className="flex flex-col gap-4">
@@ -83,7 +83,7 @@ export const FilterComponent: React.FC<FilterComponentProps> = ({
                   )}
                 >
                   {selectedStatuses.includes(status) && (
-                    <Check className="h-3 w-3 text-white stroke-[4]" />
+                    <Check className="h-3 w-3 text-white stroke-4" />
                   )}
                 </div>
                 <Typography 

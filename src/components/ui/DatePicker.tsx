@@ -29,7 +29,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       <div className="flex justify-between items-center">
         <label 
           className={cn(
-            "font-spartan text-[13px] font-medium leading-[15px] tracking-[-0.1px]",
+            "font-spartan text-[13px] font-medium leading-3.75 tracking-[-0.1px]",
             error ? "text-[#EC5757]" : "text-[#7E88C3] dark:text-[#DFE3FA]"
           )}
         >
@@ -42,7 +42,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         type="button"
         onClick={handleTriggerClick}
         className={cn(
-          "flex h-12 w-full items-center justify-between rounded-[4px] border px-5 font-spartan text-[15px] font-bold transition-all focus:outline-none relative",
+          "flex h-12 w-full items-center justify-between rounded-lg border px-5 font-spartan text-[15px] font-bold transition-all focus:outline-none relative",
           "bg-white text-[#0C0E16] dark:bg-[#1E2139] dark:text-white",
           error ? "border-[#EC5757]" : "border-[#DFE3FA] hover:border-[#7C5DFA] dark:border-[#252945]"
         )}
@@ -50,7 +50,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         <span>{value ? format(new Date(value), 'dd MMM yyyy') : 'Select Date'}</span>
         <Calendar 
           size={16} 
-          className="text-[#7E88C3] absolute left-[208px]" 
+          className="text-[#7E88C3] absolute left-52" 
         />
       </button>
 

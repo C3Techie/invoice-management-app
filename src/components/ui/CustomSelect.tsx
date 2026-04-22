@@ -46,7 +46,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "flex h-12 w-full items-center justify-between rounded-[4px] border px-5 font-spartan text-[15px] font-bold transition-all focus:outline-none",
+          "flex h-12 w-full items-center justify-between rounded-lg border px-5 font-spartan text-[15px] font-bold transition-all focus:outline-none",
           "bg-white text-[#0C0E16] dark:bg-[#1E2139] dark:text-white",
           isOpen ? "border-[#7C5DFA]" : "border-[#DFE3FA] hover:border-[#7C5DFA] dark:border-[#252945]"
         )}
@@ -60,7 +60,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
 
       {/* Menu */}
       {isOpen && (
-        <div className="absolute top-[85px] left-0 z-20 w-full rounded-lg bg-white shadow-[0_10px_20px_rgba(72,84,159,0.25)] dark:bg-[#252945] dark:shadow-[0_10px_20px_rgba(0,0,0,0.25)]">
+        <div className="absolute top-21.25 left-0 z-20 w-full rounded-lg bg-white shadow-[0_10px_20px_rgba(72,84,159,0.25)] dark:bg-[#252945] dark:shadow-[0_10px_20px_rgba(0,0,0,0.25)]">
           <div className="flex flex-col">
             {options.map((option, index) => (
               <button

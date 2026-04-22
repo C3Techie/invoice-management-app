@@ -45,7 +45,7 @@ const InvoiceDetailPage: React.FC = () => {
   }).format(invoice.total);
 
   return (
-    <div className="mx-auto flex w-full max-w-[730px] flex-col pb-32 pt-0">
+    <div className="mx-auto flex w-full max-w-182.5 flex-col pb-32 pt-0">
       {/* Go Back Link */}
       <Link
         to="/"
@@ -95,7 +95,7 @@ const InvoiceDetailPage: React.FC = () => {
               {invoice.description}
             </Typography>
           </div>
-          <div className="flex flex-col text-left font-spartan text-[13px] font-medium leading-[18px] tracking-[-0.1px] text-[#7E88C3] dark:text-[#DFE3FA] md:text-right md:w-[88px] shrink-0">
+          <div className="flex flex-col text-left font-spartan text-[13px] font-medium leading-4.5 tracking-[-0.1px] text-[#7E88C3] dark:text-[#DFE3FA] md:text-right md:w-22 shrink-0">
             <span>{invoice.senderAddress.street}</span>
             <span>{invoice.senderAddress.city}</span>
             <span>{invoice.senderAddress.postCode}</span>
@@ -133,7 +133,7 @@ const InvoiceDetailPage: React.FC = () => {
             <Typography variant="heading-s" className="mb-2 text-[15px]">
               {invoice.clientName}
             </Typography>
-            <div className="flex flex-col font-spartan text-[11px] leading-[18px] tracking-[-0.23px] text-[#7E88C3] dark:text-[#DFE3FA]">
+            <div className="flex flex-col font-spartan text-[11px] leading-4.5 tracking-[-0.23px] text-[#7E88C3] dark:text-[#DFE3FA]">
               <span>{invoice.clientAddress.street}</span>
               <span>{invoice.clientAddress.city}</span>
               <span>{invoice.clientAddress.postCode}</span>
@@ -206,20 +206,20 @@ const InvoiceDetailPage: React.FC = () => {
 
       {/* Delete Confirmation Modal */}
       {isDeleteModalOpen && (
-        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/50 px-6">
-          <div className="w-full max-w-[484px] rounded-lg bg-white p-12 dark:bg-[#1E2139] md:max-w-[484px]">
+        <div className="fixed inset-0 z-110 flex items-center justify-center bg-black/50 px-6">
+          <div className="w-full max-w-121 rounded-lg bg-white p-12 dark:bg-[#1E2139] md:max-w-121">
             <Typography variant="heading-m" className="mb-3 block text-[24px] text-[#0C0E16] dark:text-white md:w-auto md:h-auto whitespace-nowrap">
               Confirm Deletion
             </Typography>
-            <Typography variant="body" className="mb-[14px] block leading-[22px] text-[#888EB0] dark:text-[#DFE3FA] md:w-[384px] md:h-auto">
+            <Typography variant="body" className="mb-3.5 block leading-5.5 text-[#888EB0] dark:text-[#DFE3FA] md:w-[384px] md:h-auto">
               Are you sure you want to delete invoice #{invoice.id}? This action cannot be
               undone.
             </Typography>
             <div className="flex justify-end gap-2">
-              <Button variant="edit" className="w-[91px]" onClick={() => setIsDeleteModalOpen(false)}>
+              <Button variant="edit" className="w-22.75" onClick={() => setIsDeleteModalOpen(false)}>
                 Cancel
               </Button>
-              <Button variant="destructive" className="w-[89px]" onClick={handleDelete}>
+              <Button variant="destructive" className="w-22.25" onClick={handleDelete}>
                 Delete
               </Button>
             </div>

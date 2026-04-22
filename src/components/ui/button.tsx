@@ -65,7 +65,7 @@ function Button({
             <path d="M6.313 10.036v-3.724h3.724V3.712H6.313V0H3.724v3.712H0v2.6h3.724v3.724h2.589z" fill="#7C5DFA" fillRule="nonzero"/>
           </svg>
         </span>
-        <span className="translate-y-[-1px]">
+        <span className="-translate-y-px">
           <span className="md:hidden">New</span>
           <span className="hidden md:inline">{children}</span>
         </span>

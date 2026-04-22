@@ -197,11 +197,11 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex">
+    <div className="fixed inset-0 z-60 flex">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       
-      <div className="relative h-screen w-full max-w-[719px] flex-col bg-white overflow-y-auto dark:bg-[#141625] lg:rounded-r-[20px] animate-in slide-in-from-left duration-300 lg:pl-[103px]">
-        <div className="p-8 pb-32 pt-[112px] md:p-14 md:pt-[112px] lg:pt-[56px]">
+      <div className="relative h-screen w-full max-w-179.75 flex-col bg-white overflow-y-auto dark:bg-[#141625] lg:rounded-r-[20px] animate-in slide-in-from-left duration-300 lg:pl-25.75">
+        <div className="p-8 pb-32 pt-28 md:p-14 md:pt-28 lg:pt-14">
           {/* Go Back Link - Mobile/Tablet Only */}
           <button
             onClick={onClose}
@@ -213,7 +213,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
             <span>Go back</span>
           </button>
 
-          <Typography variant="heading-m" as="h2" className="mb-[46px] block">
+          <Typography variant="heading-m" as="h2" className="mb-11.5 block">
             {invoiceToEdit ? <>Edit <span className="text-[#888EB0]">#</span>{invoiceToEdit.id}</> : 'New Invoice'}
           </Typography>
 
@@ -311,7 +311,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
                 ))}
                 
                 <div className="mt-4">
-                  <Button variant="addItem" className="md:w-[504px]" onClick={addItem}>
+                  <Button variant="addItem" className="md:w-126px]" onClick={addItem}>
                     + Add New Item
                   </Button>
                 </div>
@@ -339,7 +339,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
         <div className="sticky bottom-0 mt-auto flex justify-between items-center bg-white p-4 md:p-8 dark:bg-[#141625] shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-20">
             <div className="shrink-0">
               {!invoiceToEdit && (
-                <Button variant="edit" className="w-[84px] md:w-[96px]" onClick={onClose}>
+                <Button variant="edit" className="w-21px md:w-24px" onClick={onClose}>
                   Discard
                 </Button>
               )}
@@ -347,7 +347,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
             
             <div className="flex gap-2 shrink-0">
               {invoiceToEdit && (
-                <Button variant="edit" className="w-[84px] md:w-[96px]" onClick={onClose}>
+                <Button variant="edit" className="w-21px md:w-24px" onClick={onClose}>
                   Cancel
                 </Button>
               )}
@@ -355,7 +355,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
                 <Button 
                   variant="draft" 
                   name="draft-button" 
-                  className="w-[117px] md:w-[133px] text-[12px] md:text-[15px] px-0" 
+                  className="w-29.25px md:w-33.25px text-12px] md:text-[15px] px-0" 
                   onClick={() => handleSubmit('draft')}
                 >
                   Save as Draft
@@ -364,7 +364,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
               <Button 
                 variant="default" 
                 name="send-button" 
-                className="w-[112px] md:w-[128px] text-[12px] md:text-[15px] px-0" 
+                className="w-28px md:w-32px text-12px] md:text-[15px] px-0" 
                 onClick={() => handleSubmit(invoiceToEdit ? invoiceToEdit.status : 'pending')}
               >
                 {invoiceToEdit ? 'Save Changes' : 'Save & Send'}

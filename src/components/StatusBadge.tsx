@@ -33,13 +33,13 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
   return (
     <div
       className={cn(
-        'flex h-10 w-[104px] items-center justify-center gap-2 rounded-md',
+        'flex h-10 w-26 items-center justify-center gap-2 rounded-md',
         current.bg,
         current.text
       )}
     >
       <span className={cn('h-2 w-2 rounded-full', current.dot)} />
-      <span className="font-spartan text-[15px] font-bold capitalize leading-[15px] tracking-[-0.25px]">
+      <span className="font-spartan text-[15px] font-bold capitalize leading-3.75 tracking-[-0.25px]">
         {current.label}
       </span>
     </div>

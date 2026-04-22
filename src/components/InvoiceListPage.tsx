@@ -26,9 +26,9 @@ const InvoiceListPage: React.FC = () => {
       : invoices.filter((inv) => selectedStatuses.includes(inv.status));
 
   return (
-    <div className="relative w-full max-w-[730px]">
+    <div className="relative w-full max-w-182.5">
       {/* Header - Vertical Title/Count on left, Filter/Button on right */}
-      <div className="flex items-center justify-between w-full px-6 md:px-0 mb-8 md:mb-[65px]">
+      <div className="flex items-center justify-between w-full px-6 md:px-0 mb-8 md:mb-16.25">
         <div className="flex flex-col">
           <Typography
             variant="heading-l"
@@ -59,23 +59,23 @@ const InvoiceListPage: React.FC = () => {
       {/* List / Empty State */}
       <div className="mt-0">
         {filteredInvoices.length === 0 ? (
-          <div className="relative h-[342px] w-full">
+          <div className="relative h-85.5 w-full">
             {/* Empty State Image - Absolute Offset Logic */}
-            <div className="absolute left-[0] md:left-[244px] top-[120px] flex flex-col items-center text-center max-md:relative max-md:left-0 max-md:top-0 max-md:mt-24">
+            <div className="absolute left-0 md:left-61 top-30 flex flex-col items-center text-center max-md:relative max-md:left-0 max-md:top-0 max-md:mt-24">
               <img
                 src="/assets/no-invoice.png"
                 alt="No invoices"
-                className="mb-16 w-[241px] h-auto object-contain"
+                className="mb-16 w-60.25 h-auto object-contain"
               />
               <Typography
                 variant="heading-m"
-                className="mb-6 leading-[22px] tracking-[-0.75px] text-[#0C0E16] dark:text-white"
+                className="mb-6 leading-5.5 tracking-[-0.75px] text-[#0C0E16] dark:text-white"
               >
                 There is nothing here
               </Typography>
               <Typography
                 variant="body"
-                className="max-w-[220px] text-[13px] leading-[15px] text-[#888EB0] dark:text-[#DFE3FA]"
+                className="max-w-55 text-[13px] leading-3.75 text-[#888EB0] dark:text-[#DFE3FA]"
               >
                 Create an invoice by clicking the <br /> <span className="font-bold">New Invoice</span> button and get started
               </Typography>

@@ -20,7 +20,7 @@ export const InvoiceCard: React.FC<InvoiceCardProps> = ({ invoice }) => {
   return (
     <Link
       to={`/invoice/${invoice.id}`}
-      className="group relative block h-[72px] w-full max-w-[730px] rounded-[8px] bg-white border border-transparent transition-all hover:border-[#7C5DFA] dark:bg-[#1E2139] max-lg:h-auto max-lg:w-full max-lg:p-6 mb-4 shadow-[0_10px_10px_-10px_rgba(72,84,159,0.10)]"
+      className="group relative block h-18 w-full max-w-182.5 rounded-xl bg-white border border-transparent transition-all hover:border-[#7C5DFA] dark:bg-[#1E2139] max-lg:h-auto max-lg:w-full max-lg:p-6 mb-4 shadow-[0_10px_10px_-10px_rgba(72,84,159,0.10)]"
     >
       {/* Desktop/Tablet Flex Layout */}
       <div className="hidden md:flex h-full w-full items-center px-8">
@@ -73,7 +73,7 @@ export const InvoiceCard: React.FC<InvoiceCardProps> = ({ invoice }) => {
       </div>
 
       {/* Mobile Layout - Fixed 134px Height */}
-      <div className="md:hidden flex flex-col justify-between h-[134px] w-full px-6 py-6 border border-transparent rounded-[8px] bg-white dark:bg-[#1E2139] shadow-[0_10px_10px_-10px_rgba(72,84,159,0.10)] transition-all hover:border-[#7C5DFA]">
+      <div className="md:hidden flex flex-col justify-between h-33.5 w-full px-6 py-6 border border-transparent rounded-xl bg-white dark:bg-[#1E2139] shadow-[0_10px_10px_-10px_rgba(72,84,159,0.10)] transition-all hover:border-[#7C5DFA]">
         <div className="flex items-center justify-between">
           <Typography variant="heading-s-variant" className="font-bold text-[#0C0E16] dark:text-white">
             <span className="text-[#7E88C3]">#</span>
