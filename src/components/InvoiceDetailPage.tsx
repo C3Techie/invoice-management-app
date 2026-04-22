@@ -207,19 +207,19 @@ const InvoiceDetailPage: React.FC = () => {
       {/* Delete Confirmation Modal */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/50 px-6">
-          <div className="w-full max-w-[480px] rounded-lg bg-white p-8 dark:bg-[#1E2139] md:p-12">
-            <Typography variant="heading-m" className="mb-4 text-[#0C0E16] dark:text-white">
+          <div className="w-full max-w-[484px] rounded-lg bg-white p-12 dark:bg-[#1E2139] md:max-w-[484px]">
+            <Typography variant="heading-m" className="mb-3 block text-[24px] text-[#0C0E16] dark:text-white md:w-auto md:h-auto whitespace-nowrap">
               Confirm Deletion
             </Typography>
-            <Typography variant="body" className="mb-8 leading-[22px] text-[#888EB0] dark:text-[#DFE3FA]">
+            <Typography variant="body" className="mb-[14px] block leading-[22px] text-[#888EB0] dark:text-[#DFE3FA] md:w-[384px] md:h-auto">
               Are you sure you want to delete invoice #{invoice.id}? This action cannot be
               undone.
             </Typography>
             <div className="flex justify-end gap-2">
-              <Button variant="edit" onClick={() => setIsDeleteModalOpen(false)}>
+              <Button variant="edit" className="w-[91px]" onClick={() => setIsDeleteModalOpen(false)}>
                 Cancel
               </Button>
-              <Button variant="destructive" onClick={handleDelete}>
+              <Button variant="destructive" className="w-[89px]" onClick={handleDelete}>
                 Delete
               </Button>
             </div>

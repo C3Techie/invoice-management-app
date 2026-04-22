@@ -213,7 +213,7 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
             <span>Go back</span>
           </button>
 
-          <Typography variant="heading-m" className="mb-[46px]">
+          <Typography variant="heading-m" as="h2" className="mb-[46px] block">
             {invoiceToEdit ? <>Edit <span className="text-[#888EB0]">#</span>{invoiceToEdit.id}</> : 'New Invoice'}
           </Typography>
 
@@ -277,11 +277,6 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
             <section>
               <div className="mb-4">
                 <Typography variant="heading-s" className="text-[#777BB1] text-[18px]">Item List</Typography>
-                {errors.itemsList && (
-                  <span className="font-spartan text-[10px] font-semibold text-[#EC5757]">
-                    - An item must be added
-                  </span>
-                )}
               </div>
               
               <div className="hidden md:grid grid-cols-12 gap-4 mb-4">
@@ -324,8 +319,17 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
             </section>
             
             {Object.keys(errors).length > 0 && (
-              <div className="text-[#EC5757] text-[10px] font-semibold">
-                - All fields must be added
+              <div className="mt-8 flex flex-col gap-1 pb-8">
+                {Object.keys(errors).some(k => k !== 'itemsList') && (
+                  <span className="text-[#EC5757] text-[10px] font-semibold tracking-[-0.21px]">
+                    - All fields must be added
+                  </span>
+                )}
+                {errors.itemsList && (
+                  <span className="text-[#EC5757] text-[10px] font-semibold tracking-[-0.21px]">
+                    - An item must be added
+                  </span>
+                )}
               </div>
             )}
           </form>
@@ -334,12 +338,19 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
         {/* Action Buttons */}
         <div className="sticky bottom-0 mt-auto flex justify-between items-center bg-white p-4 md:p-8 dark:bg-[#141625] shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-20">
             <div className="shrink-0">
-              <Button variant="edit" className="w-[84px] md:w-[96px]" onClick={onClose}>
-                {invoiceToEdit ? 'Cancel' : 'Discard'}
-              </Button>
+              {!invoiceToEdit && (
+                <Button variant="edit" className="w-[84px] md:w-[96px]" onClick={onClose}>
+                  Discard
+                </Button>
+              )}
             </div>
             
             <div className="flex gap-2 shrink-0">
+              {invoiceToEdit && (
+                <Button variant="edit" className="w-[84px] md:w-[96px]" onClick={onClose}>
+                  Cancel
+                </Button>
+              )}
               {!invoiceToEdit && (
                 <Button 
                   variant="draft" 

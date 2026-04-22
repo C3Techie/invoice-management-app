@@ -77,7 +77,7 @@ const InvoiceListPage: React.FC = () => {
                 variant="body"
                 className="max-w-[220px] text-[13px] leading-[15px] text-[#888EB0] dark:text-[#DFE3FA]"
               >
-                Create an invoice by clicking the <span className="font-bold">New Invoice</span> button and get started
+                Create an invoice by clicking the <br /> <span className="font-bold">New Invoice</span> button and get started
               </Typography>
             </div>
           </div>
