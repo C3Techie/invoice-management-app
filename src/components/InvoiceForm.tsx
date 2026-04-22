@@ -51,6 +51,16 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
   const [errors, setErrors] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [isOpen, onClose]);
+
+  useEffect(() => {
     if (invoiceToEdit) {
       setFormData(invoiceToEdit);
     } else {
@@ -190,14 +200,24 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
     <div className="fixed inset-0 z-[60] flex">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
       
-      <div className="relative h-screen w-full max-w-[719px] flex-col bg-white overflow-y-auto dark:bg-[#141625] lg:rounded-r-[20px] animate-in slide-in-from-left duration-300">
-        <div className="p-8 md:p-14 md:pl-[159px]">
-          <Typography variant="heading-m" className="mb-12">
+      <div className="relative h-screen w-full max-w-[719px] flex-col bg-white overflow-y-auto dark:bg-[#141625] lg:rounded-r-[20px] animate-in slide-in-from-left duration-300 lg:pl-[103px]">
+        <div className="p-8 pb-32 pt-[112px] md:p-14 md:pt-[112px] lg:pt-[56px]">
+          {/* Go Back Link - Mobile/Tablet Only */}
+          <button
+            onClick={onClose}
+            className="mb-6 flex items-center gap-6 md:hidden font-spartan text-[15px] font-bold tracking-[-0.25px] text-[#0C0E16] dark:text-white"
+          >
+            <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.342.886L2.114 5.114l4.228 4.228" stroke="#9277FF" strokeWidth="2" fill="none" fillRule="evenodd"/>
+            </svg>
+            <span>Go back</span>
+          </button>
+
+          <Typography variant="heading-m" className="mb-[46px]">
             {invoiceToEdit ? <>Edit <span className="text-[#888EB0]">#</span>{invoiceToEdit.id}</> : 'New Invoice'}
           </Typography>
 
           <form className="flex flex-col gap-12" onSubmit={(e) => e.preventDefault()}>
-            {/* Bill From */}
             <section>
               <Typography variant="body" className="mb-6 block font-bold text-primary">Bill From</Typography>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -216,7 +236,6 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
               </div>
             </section>
 
-            {/* Bill To */}
             <section>
               <Typography variant="body" className="mb-6 block font-bold text-primary">Bill To</Typography>
               <div className="flex flex-col gap-6">
@@ -243,7 +262,6 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
               </div>
             </section>
 
-            {/* Invoice Details */}
             <section className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
                 <DatePicker label="Invoice Date" value={formData.createdAt!} onChange={(val) => handleInputChange('createdAt', val)} error={errors.createdAt} />
@@ -256,9 +274,8 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
               </div>
             </section>
 
-            {/* Item List */}
             <section>
-              <div className="mb-4 flex justify-between items-center">
+              <div className="mb-4">
                 <Typography variant="heading-s" className="text-[#777BB1] text-[18px]">Item List</Typography>
                 {errors.itemsList && (
                   <span className="font-spartan text-[10px] font-semibold text-[#EC5757]">
@@ -266,32 +283,43 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
                   </span>
                 )}
               </div>
+              
+              <div className="hidden md:grid grid-cols-12 gap-4 mb-4">
+                <div className="col-span-4"><Typography variant="body" className="text-[#7E88C3] dark:text-[#888EB0]">Item Name</Typography></div>
+                <div className="col-span-2"><Typography variant="body" className="text-[#7E88C3] dark:text-[#888EB0]">Qty.</Typography></div>
+                <div className="col-span-3"><Typography variant="body" className="text-[#7E88C3] dark:text-[#888EB0]">Price</Typography></div>
+                <div className="col-span-2"><Typography variant="body" className="text-[#7E88C3] dark:text-[#888EB0]">Total</Typography></div>
+              </div>
+
               <div className="flex flex-col gap-4">
                 {formData.items?.map((item, index) => (
-                  <div key={item.id} className="grid grid-cols-12 gap-4 items-end">
+                  <div key={item.id} className="grid grid-cols-12 gap-4 items-start md:items-center">
                     <div className="col-span-12 md:col-span-4">
-                      <Input label="Item Name" value={item.name} onChange={(e) => handleItemChange(index, 'name', e.target.value)} error={errors[`items.${index}.name`]} />
+                      <Input label="Item Name" hideLabelOnDesktop value={item.name} onChange={(e) => handleItemChange(index, 'name', e.target.value)} error={errors[`items.${index}.name`]} />
                     </div>
                     <div className="col-span-3 md:col-span-2">
-                      <Input label="Qty." type="number" value={item.quantity} onChange={(e) => handleItemChange(index, 'quantity', Number(e.target.value))} error={errors[`items.${index}.quantity`]} />
+                      <Input label="Qty." type="number" hideLabelOnDesktop value={item.quantity} onChange={(e) => handleItemChange(index, 'quantity', Number(e.target.value))} error={errors[`items.${index}.quantity`]} />
                     </div>
                     <div className="col-span-4 md:col-span-3">
-                      <Input label="Price" type="number" value={item.price} onChange={(e) => handleItemChange(index, 'price', Number(e.target.value))} error={errors[`items.${index}.price`]} />
+                      <Input label="Price" type="number" hideLabelOnDesktop value={item.price} onChange={(e) => handleItemChange(index, 'price', Number(e.target.value))} error={errors[`items.${index}.price`]} />
                     </div>
                     <div className="col-span-3 md:col-span-2 flex flex-col gap-2">
-                      <label className="mb-2 block font-spartan text-[13px] font-medium text-[#7E88C3] dark:text-[#888EB0]">Total</label>
+                      <label className="block md:hidden font-spartan text-[13px] font-medium text-[#7E88C3] dark:text-[#888EB0]">Total</label>
                       <div className="flex h-12 items-center font-bold text-[#888EB0] dark:text-[#DFE3FA]">
                         {item.total.toFixed(2)}
                       </div>
                     </div>
-                    <button onClick={() => deleteItem(index)} className="col-span-2 md:col-span-1 flex h-12 items-center justify-center text-[#888EB0] hover:text-red transition-colors mb-0 md:mb-0">
+                    <button onClick={() => deleteItem(index)} className="col-span-2 md:col-span-1 flex h-12 items-center justify-center text-[#888EB0] hover:text-[#EC5757] transition-colors">
                       <Trash2 size={20} />
                     </button>
                   </div>
                 ))}
-                <Button variant="addItem" onClick={addItem}>
-                  + Add New Item
-                </Button>
+                
+                <div className="mt-4">
+                  <Button variant="addItem" className="md:w-[504px]" onClick={addItem}>
+                    + Add New Item
+                  </Button>
+                </div>
               </div>
             </section>
             
@@ -304,16 +332,33 @@ export const InvoiceForm: React.FC<InvoiceFormProps> = ({
         </div>
 
         {/* Action Buttons */}
-        <div className="sticky bottom-0 mt-auto flex justify-between items-center bg-white p-8 dark:bg-[#141625] shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-20">
-           {invoiceToEdit ? <div /> : <Button variant="edit" onClick={onClose}>Discard</Button>}
-           
-           <div className="flex gap-2">
-             <Button variant="edit" onClick={onClose}>Cancel</Button>
-             {!invoiceToEdit && <Button variant="draft" onClick={() => handleSubmit('draft')}>Save as Draft</Button>}
-             <Button variant="default" onClick={() => handleSubmit(invoiceToEdit ? invoiceToEdit.status : 'pending')}>
+        <div className="sticky bottom-0 mt-auto flex justify-between items-center bg-white p-4 md:p-8 dark:bg-[#141625] shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-20">
+            <div className="shrink-0">
+              <Button variant="edit" className="w-[84px] md:w-[96px]" onClick={onClose}>
+                {invoiceToEdit ? 'Cancel' : 'Discard'}
+              </Button>
+            </div>
+            
+            <div className="flex gap-2 shrink-0">
+              {!invoiceToEdit && (
+                <Button 
+                  variant="draft" 
+                  name="draft-button" 
+                  className="w-[117px] md:w-[133px] text-[12px] md:text-[15px] px-0" 
+                  onClick={() => handleSubmit('draft')}
+                >
+                  Save as Draft
+                </Button>
+              )}
+              <Button 
+                variant="default" 
+                name="send-button" 
+                className="w-[112px] md:w-[128px] text-[12px] md:text-[15px] px-0" 
+                onClick={() => handleSubmit(invoiceToEdit ? invoiceToEdit.status : 'pending')}
+              >
                 {invoiceToEdit ? 'Save Changes' : 'Save & Send'}
-             </Button>
-           </div>
+              </Button>
+            </div>
         </div>
       </div>
     </div>

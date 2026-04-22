@@ -24,7 +24,7 @@ const buttonVariants = cva(
         // Button 4 - Save as Draft (Light/Dark)
         draft: 'h-[48px] w-[133px] bg-[#373B53] text-[#888EB0] hover:bg-[#0C0E16] dark:text-[#DFE3FA] dark:hover:bg-[#1E2139]',
         // Button 6 - Add New Item
-        addItem: 'h-[48px] w-full max-w-[350px] bg-[#F9FAFE] text-[#7E88C3] hover:bg-[#DFE3FA] dark:bg-[#252945] dark:text-[#7E88C3] dark:hover:bg-[#1E2139]',
+        addItem: 'h-[48px] w-full bg-[#F9FAFE] text-[#7E88C3] hover:bg-[#DFE3FA] dark:bg-[#252945] dark:text-[#7E88C3] dark:hover:bg-[#1E2139]',
       },
       size: {
         default: 'h-12',
@@ -79,7 +79,19 @@ function Button({
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     >
-      {children}
+      {props.name === 'draft-button' ? (
+        <>
+          <span className="md:hidden">Draft</span>
+          <span className="hidden md:inline">{children}</span>
+        </>
+      ) : props.name === 'send-button' ? (
+        <>
+          <span className="md:hidden">Send</span>
+          <span className="hidden md:inline">{children}</span>
+        </>
+      ) : (
+        children
+      )}
     </Comp>
   )
 }

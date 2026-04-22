@@ -5,12 +5,14 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: boolean;
   errorMessage?: string;
+  hideLabelOnDesktop?: boolean;
 }
 
 export const Input: React.FC<InputProps> = ({
   label,
   error,
   errorMessage,
+  hideLabelOnDesktop,
   className,
   ...props
 }) => {
@@ -20,7 +22,8 @@ export const Input: React.FC<InputProps> = ({
         <label 
           className={cn(
             "font-spartan text-[13px] font-medium leading-[15px] tracking-[-0.1px]",
-            error ? "text-[#EC5757]" : "text-[#7E88C3] dark:text-[#DFE3FA]"
+            error ? "text-[#EC5757]" : "text-[#7E88C3] dark:text-[#DFE3FA]",
+            hideLabelOnDesktop && "md:hidden"
           )}
         >
           {label}

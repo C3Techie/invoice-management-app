@@ -16,6 +16,16 @@ const InvoiceDetailPage: React.FC = () => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
+  React.useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isDeleteModalOpen) {
+        setIsDeleteModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [isDeleteModalOpen]);
+
   if (!invoice) {
     return (
       <div className="flex h-screen items-center justify-center">
@@ -35,7 +45,7 @@ const InvoiceDetailPage: React.FC = () => {
   }).format(invoice.total);
 
   return (
-    <div className="mx-auto flex w-full max-w-[730px] flex-col pb-32 pt-8 md:pt-12">
+    <div className="mx-auto flex w-full max-w-[730px] flex-col pb-32 pt-0">
       {/* Go Back Link */}
       <Link
         to="/"
@@ -85,7 +95,7 @@ const InvoiceDetailPage: React.FC = () => {
               {invoice.description}
             </Typography>
           </div>
-          <div className="flex flex-col text-left font-spartan text-[11px] leading-[18px] tracking-[-0.23px] text-[#7E88C3] dark:text-[#DFE3FA] md:text-right">
+          <div className="flex flex-col text-left font-spartan text-[13px] font-medium leading-[18px] tracking-[-0.1px] text-[#7E88C3] dark:text-[#DFE3FA] md:text-right md:w-[88px] shrink-0">
             <span>{invoice.senderAddress.street}</span>
             <span>{invoice.senderAddress.city}</span>
             <span>{invoice.senderAddress.postCode}</span>
@@ -145,7 +155,7 @@ const InvoiceDetailPage: React.FC = () => {
         {/* Items Table */}
         <div className="overflow-hidden rounded-t-lg bg-[#F9FAFE] p-6 dark:bg-[#252945] md:p-8">
           {/* Desktop Table Header */}
-          <div className="mb-8 hidden grid-cols-4 md:grid">
+          <div className="mb-8 hidden grid-cols-5 md:grid">
             <Typography variant="body-variant" className="col-span-2 text-[#7E88C3] dark:text-[#DFE3FA]">Item Name</Typography>
             <Typography variant="body-variant" className="text-center text-[#7E88C3] dark:text-[#DFE3FA]">QTY.</Typography>
             <Typography variant="body-variant" className="text-right text-[#7E88C3] dark:text-[#DFE3FA]">Price</Typography>
@@ -155,7 +165,7 @@ const InvoiceDetailPage: React.FC = () => {
           {/* Item Rows */}
           <div className="flex flex-col gap-6 md:gap-8">
             {invoice.items.map((item) => (
-              <div key={item.id} className="flex items-center justify-between md:grid md:grid-cols-4">
+              <div key={item.id} className="flex items-center justify-between md:grid md:grid-cols-5">
                 <div className="flex flex-col gap-2 md:col-span-2">
                   <Typography variant="heading-s-variant" className="text-[12px] md:text-[15px]">{item.name}</Typography>
                   <Typography variant="body" className="text-[#7E88C3] dark:text-[#888EB0] md:hidden">

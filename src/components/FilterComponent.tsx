@@ -78,12 +78,12 @@ export const FilterComponent: React.FC<FilterComponentProps> = ({
                   className={cn(
                     'flex h-4 w-4 items-center justify-center rounded-sm transition-colors border-2',
                     selectedStatuses.includes(status)
-                      ? 'bg-[#DFE3FA] border-primary dark:bg-[#1E2139]'
+                      ? 'bg-primary border-primary'
                       : 'border-transparent bg-[#DFE3FA] group-hover:border-primary dark:bg-[#1E2139]'
                   )}
                 >
                   {selectedStatuses.includes(status) && (
-                    <Check className="h-3 w-3 text-primary stroke-[4]" />
+                    <Check className="h-3 w-3 text-white stroke-[4]" />
                   )}
                 </div>
                 <Typography 
