@@ -7,7 +7,7 @@
 
 A full-stack, responsive Invoice Management Application built with React, TypeScript, and Tailwind CSS. This project allows users to create, read, update, delete, and manage invoices with a clean, intuitive, and responsive interface.
 
-**[Live Demo](https://your-live-url.com)** | **[Figma Design](https://www.figma.com/design/gwFg2uPHE2VRvl7ppb47hq/invoice-app--Copy-?node-id=0-1&t=XomI3ZoEvvUEC4kf-1)**
+**[Live Demo](https://invoice-management-app-eight.vercel.app/)** | **[Figma Design](https://www.figma.com/design/gwFg2uPHE2VRvl7ppb47hq/invoice-app--Copy-?node-id=0-1&t=XomI3ZoEvvUEC4kf-1)**
 
 *(suggestion: add a screenshot of your app named `screenshot.png`)*
 
